@@ -52,12 +52,13 @@ const ChannelsList = ({
             );
           }
           return (
-            <Nav.Item
-              key={id}
+            <Button
+              key={id}              
+              eventkey={id}
               onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
             >
-              <Nav.Link eventKey={id}># {name}</Nav.Link>
-            </Nav.Item>
+              # {name}
+            </Button>
           );
         })}
       </Nav>
