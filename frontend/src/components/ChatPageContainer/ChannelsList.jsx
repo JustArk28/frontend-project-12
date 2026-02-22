@@ -53,7 +53,8 @@ const ChannelsList = ({
           }
           return (
             <Button
-              key={id}              
+              key={id}
+              type='submit'              
               eventkey={id}
               onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
             >
