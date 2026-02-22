@@ -1,0 +1,49 @@
+
+.div-position{
+  display: flex;
+  justify-self: center;
+}
+.card-position{
+  width: 750px; 
+  height: 470px;
+  /* margin-left: 380px;*/
+  margin-top: 100px; 
+  box-shadow: 5px 2px 5px rgba(204, 203, 203, 0.5);
+  border: 1px solid rgb(210, 209, 209);
+  border-radius: 5px;
+  
+}
+.img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-top: 40px;
+    justify-self: center;
+    margin-right: 80px;
+}
+.my-body-card {
+  display: flex;
+  /* grid-template-columns: 1fr 1fr;
+  display: grid; */
+  justify-content: center;
+  /* gap: 0 70px; */
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 85px;
+}
+
+.enter{
+  /* font-weight: bold; */
+  font-size: 38px;
+}
+.form-control::placeholder{
+  font-size: 16px;
+  
+}
+.registration-link-area{
+  border-top: 1px solid rgb(210, 209, 209);;
+  background-color: rgb(219, 216, 216);
+  padding-top: 30px;
+  padding-bottom: 26px;
+  text-align: center;
+}

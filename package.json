@@ -15,6 +15,7 @@
   "type": "module",
   "main": "src/main.jsx",
   "scripts": {
+    "start": "start-server -s ./frontend/dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
