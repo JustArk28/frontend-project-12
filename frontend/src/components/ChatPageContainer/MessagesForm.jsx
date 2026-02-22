@@ -62,7 +62,7 @@ const MessagesForm = ({ currentChannelId, inputFocus }) => {
         {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
             <div className="input-field-and-button">
-              {/* <label label="message"></label> */}
+              <label aria-label={t("messagesForm.label")}></label>
               <Field
                 type="text"
                 name="message"
