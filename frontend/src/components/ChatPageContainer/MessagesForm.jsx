@@ -62,7 +62,7 @@ const MessagesForm = ({ currentChannelId, inputFocus }) => {
         {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
             <div className="input-field-and-button">
-              <label aria-label={t("messagesForm.label")}></label>
+              <label aria-label={t("messagesForm.label")}>
               <Field
                 type="text"
                 name="message"
@@ -73,6 +73,7 @@ const MessagesForm = ({ currentChannelId, inputFocus }) => {
                 ref={inputRef}
                 autoComplete="off"
               />
+              </label>
               <Button type="submit" disabled={loading}>
                 {t("messagesForm.submitBtn")}
               </Button>
