@@ -46,8 +46,8 @@ const MessagesForm = ({ currentChannelId, inputFocus }) => {
   };
 
   useEffect(() => {
-    inputFocus ? inputRef.current.focus() : null;
-  }, [inputFocus]);
+    inputRef.current.focus();
+  }, [currentChannelId]);
 
   return (
     <div className="input-area">

@@ -30,13 +30,17 @@ const RenameChannelModal = ({
     .max(20, t('validation.range'))
     .notOneOf(channelsNames, t('validation.notOneOf')),
   });
-  useEffect(() => {
-    showRename ? inputRef.current.select() : null;
-  }, [showRename]);  
-
+  // useEffect(() => {
+  //   inputRef.current.focus();
+  // }, []);  
+const focusInput = () => {
+  if(inputRef.current) {
+    inputRef.current.select();
+  }
+}
   return (
     <>
-      <Modal show={showRename} onHide={handleCloseRename} className="modal">
+      <Modal show={showRename} onHide={handleCloseRename} onEntered={focusInput} className="modal">
         <Modal.Header closeButton>
           <Modal.Title>{t('modal.renameChannel.title')}</Modal.Title>
         </Modal.Header>

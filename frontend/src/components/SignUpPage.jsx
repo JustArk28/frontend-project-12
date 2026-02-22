@@ -144,9 +144,9 @@ console.log('ls', localStorage)
                   </FloatingLabel>
                   </Form.Group>
                   <br />
-                  <div className="d-grid gap-2">
+                  {/* <div className="d-grid gap-2"> */}
                     <Button variant="outline-primary" type="submit" disabled={loading}>{t('signUpPage.registrationBtn')}</Button>
-                  </div>
+                  {/* </div> */}
                 </Form>
               )}
             </Formik>
