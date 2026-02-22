@@ -23,7 +23,7 @@ const resources = {
         username: "Имя пользователя",
         password: "Пароль",
         confirmPassword: "Подтвердите пароль",
-        registrationBtn: "Зарегистрироваться",
+        registrationBtn: "general",
         errors: {
           usernameRange: "От 3 до 20 символов",
           usernameExist: "Такой пользователь уже существует",
