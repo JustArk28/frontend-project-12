@@ -44,7 +44,7 @@ const ChannelsList = ({
                   as={ButtonGroup}
                   id="bg-nested-dropdown"
                 >
-                  <p className="">{t("dropdownBtn.description")}</p>
+                  <span className="">{t("dropdownBtn.description")}</span>
                   <Dropdown.Item id={id} onClick={handleRemove}>
                     {t("dropdownBtn.removeBtn")}
                   </Dropdown.Item>
