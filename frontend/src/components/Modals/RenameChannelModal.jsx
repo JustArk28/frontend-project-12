@@ -48,7 +48,7 @@ const focusInput = () => {
           <Formik
             validationSchema={schema}
             validateOnChange={false}
-            initialValues={{ newChannelName: '' }}
+            initialValues={{ newChannelName: currentChannel.name }}
             onSubmit={async ({ newChannelName }) => {
               setLoading(true)
               try {
@@ -80,6 +80,8 @@ const focusInput = () => {
             {({ handleSubmit, handleChange, values, errors, touched }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-2">
+                  <label className="input-size">
+                    {t("modal.label")}
                   <Form.Control                  
                     type="text"
                     name="newChannelName"
@@ -93,6 +95,7 @@ const focusInput = () => {
                   <Form.Control.Feedback type="invalid">
                     {errors.newChannelName}
                   </Form.Control.Feedback>
+                  </label>
                 </Form.Group>
                 <div className="modal-buttons">
                   <Button
