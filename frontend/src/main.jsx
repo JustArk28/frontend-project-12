@@ -11,7 +11,7 @@ import init from "./init";
 // );
 
 const app = async () => {
-  createRoot(document.getElementById("root")).render(await init())
+  createRoot(document.getElementById("root")).render(await <StrictMode>{init()}</StrictMode>)
 };
 
 app();
