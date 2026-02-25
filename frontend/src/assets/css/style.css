@@ -195,4 +195,5 @@ ul, li {
 .input-size {
   display: block;
   width: 100%;
+  font-size: 0;
 }
