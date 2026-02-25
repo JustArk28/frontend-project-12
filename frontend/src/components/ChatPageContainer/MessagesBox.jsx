@@ -41,7 +41,7 @@ const MessagesBox = ({ currentChannelId }) => {
                         return (
                           <li key={id}>
                             <span className="username">{username}: </span>
-                            <span>{body}</span>
+                            <span id={id}>{body}</span>
                           </li>
                         );
                       })}
