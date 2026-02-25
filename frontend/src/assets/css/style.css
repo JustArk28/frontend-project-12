@@ -192,3 +192,7 @@ ul, li {
   overflow: hidden; /* Скрытие текста за пределами */
   text-overflow: ellipsis; /* Добавление многоточия */
 }
+.input-size {
+  display: block;
+  width: 100%;
+}

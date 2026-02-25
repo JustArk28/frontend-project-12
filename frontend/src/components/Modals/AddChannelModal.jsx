@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, FloatingLabel } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import * as formik from "formik";
@@ -7,10 +7,10 @@ import * as yup from "yup";
 import routes from "../../routes";
 import "/src/assets/css/style.css";
 import { toast } from "react-toastify";
-import filter from "leo-profanity"
-import { useTranslation } from 'react-i18next';
+import filter from "leo-profanity";
+import { useTranslation } from "react-i18next";
 
-const AddChannelModal = ({setCurrentChannelId}) => {
+const AddChannelModal = ({ setCurrentChannelId }) => {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
 
@@ -31,21 +31,21 @@ const AddChannelModal = ({setCurrentChannelId}) => {
     channelName: yup
       .string()
       .trim()
-      .required(t('validation.required'))
-      .min(3, t('validation.range'))
-      .max(20, t('validation.range'))
-      .notOneOf(channelsNames, t('validation.notOneOf')),
+      .required(t("validation.required"))
+      .min(3, t("validation.range"))
+      .max(20, t("validation.range"))
+      .notOneOf(channelsNames, t("validation.notOneOf")),
   });
 
   return (
     <>
       <button className="add-button" onClick={handleShow}>
-        {t('channelTitle.addBtn')}
+        {t("channelTitle.addBtn")}
       </button>
 
       <Modal show={show} onHide={handleClose} className="modal">
         <Modal.Header closeButton>
-          <Modal.Title>{t('modal.addChannel.title')}</Modal.Title>
+          <Modal.Title>{t("modal.addChannel.title")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -53,7 +53,7 @@ const AddChannelModal = ({setCurrentChannelId}) => {
             validateOnChange={false}
             initialValues={{ channelName: "" }}
             onSubmit={async ({ channelName }) => {
-              setLoading(true)
+              setLoading(true);
               try {
                 const newChannel = { name: filter.clean(channelName.trim()) };
                 await axios
@@ -63,8 +63,8 @@ const AddChannelModal = ({setCurrentChannelId}) => {
                     },
                   })
                   .then((response) => {
-                    if (response.status === 200) {                      
-                      setCurrentChannelId(response.data.id)                      
+                    if (response.status === 200) {
+                      setCurrentChannelId(response.data.id);
                       handleClose();
                       toast.success(t("toastify.success.add"));
                     }
@@ -77,24 +77,29 @@ const AddChannelModal = ({setCurrentChannelId}) => {
                   toast.error(t("toastify.error.error"));
                 }
               } finally {
-                setLoading(false)
+                setLoading(false);
               }
             }}
           >
             {({ handleSubmit, handleChange, values, errors, touched }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-2">
-                  <Form.Control
-                    type="text"
-                    name="channelName"
-                    value={values.channelName}
-                    onChange={handleChange}
-                    ref={inputRef}
-                    isInvalid={touched.channelName && !!errors.channelName}
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.channelName}
-                  </Form.Control.Feedback>
+                  <label                    
+                    className="input-size"
+                    label={t("modal.label")}
+                  >
+                    <Form.Control
+                      type="text"
+                      name="channelName"                      
+                      value={values.channelName}
+                      onChange={handleChange}
+                      ref={inputRef}
+                      isInvalid={touched.channelName && !!errors.channelName}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.channelName}
+                    </Form.Control.Feedback>
+                  </label>
                 </Form.Group>
                 <div className="modal-buttons">
                   <Button
@@ -102,10 +107,10 @@ const AddChannelModal = ({setCurrentChannelId}) => {
                     variant="secondary"
                     onClick={handleClose}
                   >
-                    {t('modal.addChannel.closeBtn')}
+                    {t("modal.addChannel.closeBtn")}
                   </Button>
                   <Button variant="primary" type="submit" disabled={loading}>
-                    {t('modal.addChannel.submitBtn')}
+                    {t("modal.addChannel.submitBtn")}
                   </Button>
                 </div>
               </Form>

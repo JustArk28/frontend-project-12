@@ -46,7 +46,7 @@ const resources = {
         label: "Новое сообщение",
         placeholder: "Введите сообщение...",
         submitBtn: "Отправить",
-      },//
+      },
       messagesContainer: {
         messages_one: "{{count}} сообщение",
         messages_few: "{{count}} сообщения",
@@ -61,6 +61,7 @@ const resources = {
         renameBtn: "Переименовать",
       },
       modal: {
+        label: "Имя канала",
         addChannel: {
           title: "Добавить канал",
           closeBtn: "Отменить",
