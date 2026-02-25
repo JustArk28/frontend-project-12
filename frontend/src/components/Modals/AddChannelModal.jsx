@@ -84,13 +84,11 @@ const AddChannelModal = ({ setCurrentChannelId }) => {
             {({ handleSubmit, handleChange, values, errors, touched }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-2">
-                  <label                    
-                    className="input-size"
-                    text={t("modal.label")}
-                  >
+                  <label className="input-size">
+                    {t("modal.label")}
                     <Form.Control
                       type="text"
-                      name="channelName"                      
+                      name="channelName"
                       value={values.channelName}
                       onChange={handleChange}
                       ref={inputRef}
