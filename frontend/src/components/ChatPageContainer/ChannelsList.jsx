@@ -19,12 +19,12 @@ const ChannelsList = ({
   const channels = useSelector((state) => state.channelsStore.channels);
   return (
     <div className="channel-list">
-      {/* <Nav className="flex-column nav-pills nav-link"> */}
+      {/* <div className="flex-column"> */}
       {channels.map(({ id, name, removable }) => {
         if (removable) {
           return (
-            <div className="d-flex" key={id}>
-              <ButtonGroup>
+            // <div className="" key={id}>
+              <ButtonGroup key={id}>
                 <Button
                   key={id}
                   type="submit"
@@ -38,12 +38,13 @@ const ChannelsList = ({
                 <DropdownButton
                   bsPrefix={
                     currentChannelId === id
-                      ? "btn btn-secondary"
-                      : "btn btn-light"
+                    ? "btn btn-secondary"
+                    : "btn btn-light"
                   }
                   as={ButtonGroup}
                   id="bg-nested-dropdown"
                 >
+                  <div className="hidden-title">{t("dropdownBtn.description")}</div>
                   <Dropdown.Item id={id} onClick={handleRemove}>
                     {t("dropdownBtn.removeBtn")}
                   </Dropdown.Item>
@@ -52,7 +53,7 @@ const ChannelsList = ({
                   </Dropdown.Item>
                 </DropdownButton>
               </ButtonGroup>
-            </div>
+            // </div>
           );
         }
         return (
@@ -66,7 +67,7 @@ const ChannelsList = ({
           </Button>
         );
       })}
-      {/* </Nav> */}
+      {/* </div> */}
     </div>
   );
 };

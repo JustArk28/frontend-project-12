@@ -197,3 +197,6 @@ ul, li {
   width: 100%;
   font-size: 0;
 }
+.hidden-title {
+  font-size: 0;
+}

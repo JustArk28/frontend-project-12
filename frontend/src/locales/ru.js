@@ -57,6 +57,7 @@ const resources = {
         addBtn: "+",
       },
       dropdownBtn: {
+        description: 'Управление каналом',
         removeBtn: "Удалить",
         renameBtn: "Переименовать",
       },
