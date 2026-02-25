@@ -86,7 +86,7 @@ const AddChannelModal = ({ setCurrentChannelId }) => {
                 <Form.Group className="mb-2">
                   <label                    
                     className="input-size"
-                    label={t("modal.label")}
+                    text={t("modal.label")}
                   >
                     <Form.Control
                       type="text"
