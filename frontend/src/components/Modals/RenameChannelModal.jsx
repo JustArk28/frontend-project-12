@@ -48,7 +48,7 @@ const focusInput = () => {
           <Formik
             validationSchema={schema}
             validateOnChange={false}
-            initialValues={{ newChannelName: currentChannel.name }}
+            initialValues={{ newChannelName: '' }}
             onSubmit={async ({ newChannelName }) => {
               setLoading(true)
               try {
