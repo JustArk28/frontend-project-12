@@ -40,8 +40,8 @@ const MessagesBox = ({ currentChannelId }) => {
                       {messagesForRoom.map(({ id, username, body }) => {
                         return (
                           <li key={id}>
-                            <span className="username">{username}</span>
-                            <span>: {body}</span>
+                            <span className="username">{username}: </span>
+                            <span>{body}</span>
                           </li>
                         );
                       })}
