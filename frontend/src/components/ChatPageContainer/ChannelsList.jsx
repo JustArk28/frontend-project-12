@@ -24,23 +24,28 @@ const ChannelsList = ({
         if (removable) {
           return (
             <ButtonGroup key={id}>
-                <Button
-                  key={id}
-                  type="submit"
-                  eventkey={id}
-                  className="channel-name"
-                  onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
-                  >                  
-                  # {name}                  
-                </Button>
-                
-                   <div className="hidden-title">
-                    {t("dropdownBtn.description")}
+              <Button
+                key={id}
+                type="submit"
+                eventkey={id}
+                className="channel-name"
+                bsPrefix={
+                  currentChannelId === id
+                    ? "btn btn-secondary dropdown-btn-group"
+                    : "btn outline-dark dropdown-btn-group"
+                }
+                onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
+              >
+                # {name}
+              </Button>
+
+              <div className="hidden-title">
+                {t("dropdownBtn.description")}
                 <DropdownButton
                   bsPrefix={
                     currentChannelId === id
-                    ? "btn btn-secondary"
-                    : "btn btn-light"
+                      ? "btn btn-secondary menu-dropdown"
+                      : "btn outline-dark menu-dropdown"
                   }
                   as={ButtonGroup}
                   id="bg-nested-dropdown"
@@ -53,15 +58,18 @@ const ChannelsList = ({
                     {t("dropdownBtn.renameBtn")}
                   </Dropdown.Item>
                 </DropdownButton>
-                 </div>
-              </ButtonGroup>
+              </div>
+            </ButtonGroup>
           );
         }
         return (
           <Button
             key={id}
             type="submit"
-            eventkey={id}
+            eventkey={id}            
+            bsPrefix={
+              currentChannelId === id ? "btn btn-secondary btn-group" : "btn outline-dark btn-group"
+            }
             onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
           >
             # {name}

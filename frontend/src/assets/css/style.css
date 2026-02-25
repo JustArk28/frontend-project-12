@@ -117,7 +117,7 @@ ul, li {
 .counter{
   margin-top: 5px;
 }
-.nav-pills .nav-link {
+/* .nav-pills .nav-link {
   color: #333;
   border-radius: 0;
   transition: background-color 0.3s, color 0.3s;
@@ -133,14 +133,27 @@ ul, li {
 .nav-pills .nav-link.active:hover {
   background-color:rgb(81, 87.75, 93.75);
  
-}
+} */
 .btn-group{
-  /* color: #333; */
-  height: 32px;
-  /* width: 150px; */
-  /* margin: 0 -10px; */
-  border-radius: 0;
+  height: 37px;
+  width: 95%;
   
+  margin-left: 5px;
+  
+  border-radius: 0;
+}
+.dropdown-btn-group{
+  height: 37px;
+  /* width: 50%; */
+  /* align-items: left; */
+  text-align: left;
+  border-radius: 0;
+  margin-right: -5px;
+}
+.menu-dropdown{
+  border-radius: 0;
+  margin-right: 3px;
+  /* margin-left: 0; */
 }
 /* #bg-nested-dropdown{
   height: 32px;
