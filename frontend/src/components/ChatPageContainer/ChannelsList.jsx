@@ -42,9 +42,9 @@ const ChannelsList = ({
                     : "btn btn-light"
                   }
                   as={ButtonGroup}
-                  id="bg-nested-dropdown"
+                  id={t("dropdownBtn.description")}
                 >
-                  <span className="">{t("dropdownBtn.description")}</span>
+                  {/* <span className="">{t("dropdownBtn.description")}</span> */}
                   <Dropdown.Item id={id} onClick={handleRemove}>
                     {t("dropdownBtn.removeBtn")}
                   </Dropdown.Item>
