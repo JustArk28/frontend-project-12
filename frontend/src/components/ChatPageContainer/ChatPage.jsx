@@ -1,16 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "/src/assets/css/style.css";
 import { Tab } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import routes from "../../routes";
 import {
-  getChannels,
   addChannel,
   editChannelName,
   removeChannel,
 } from "../../slices/channelsSlice";
-import { getMessages, addMessage } from "../../slices/messagesSlice";
+import { addMessage } from "../../slices/messagesSlice";
 import AddChannelModal from "../Modals/AddChannelModal";
 import RenameChannelModal from "../Modals/RenameChannelModal";
 import RemoveChannelModal from "../Modals/RemoveChannelModal";
@@ -19,6 +16,8 @@ import { useTranslation } from "react-i18next";
 import ChannelsList from "./ChannelsList";
 import MessagesBox from "./MessagesBox";
 import MessagesForm from "./MessagesForm";
+import { getPrevChannels } from "../../api/axiosRequests";
+import { getPrevMessages } from "../../api/axiosRequests";
 
 const socket = io();
 
@@ -27,6 +26,11 @@ const ChatPage = () => {
   const [currentChannelId, setCurrentChannelId] = useState("1");
   const [inputFocus, setInputFocus] = useState(true);
   const [currentChannel, setCurrentChannel] = useState({});
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [showRename, setShowRename] = useState(false);
   const handleCloseRename = () => setShowRename(false);
   const handleShowRename = () => setShowRename(true);
@@ -37,17 +41,8 @@ const ChatPage = () => {
 
   const { token } = useSelector((state) => state.authStore);
   const channels = useSelector((state) => state.channelsStore.channels);
-  const messages = useSelector((state) => state.messagesStore.messages);
 
-  console.log("state", messages);
-  // console.log("mfr", messagesForRoom);
-  // console.log("mes", newMessages);
-  console.log("chan", channels);
-  // console.log('local', localStorage)
-  // console.log('', newChannelName)
   const dispatch = useDispatch();
-
-  // const inputRef = useRef(null);
 
   const handleRename = (e) => {
     const channel = channels.find((channel) => channel.id === e.target.id);
@@ -60,27 +55,11 @@ const ChatPage = () => {
     setCurrentChannel(channel);
     handleShowRemove();
   };
-  // console.log("CС", currentChannel);
-  // useEffect(() => {
-  //   inputFocus ? inputRef.current.focus() : null
-  // }, [inputFocus])
 
   useEffect(() => {
     if (token) {
-      axios
-        .get(routes.getChannels(), {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => dispatch(getChannels(response.data)));
-      axios
-        .get(routes.getMessages(), {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => dispatch(getMessages(response.data)));
+      getPrevChannels(token, dispatch)
+      getPrevMessages(token, dispatch)
     }
   }, []);
 
@@ -107,6 +86,7 @@ const ChatPage = () => {
       socket.off("removeChannel");
     };
   }, []);
+
   return (
     <>
       <div className="chat-body">
@@ -118,19 +98,26 @@ const ChatPage = () => {
           <div className="channels">
             <div className="title-and-button-of-channels">
               <h2 className="channels-title">{t("channelTitle.title")}</h2>
-              <AddChannelModal setCurrentChannelId={setCurrentChannelId} />
-              <RenameChannelModal
-                showRename={showRename}
-                handleCloseRename={handleCloseRename}
-                currentChannel={currentChannel}
-              />
-              <RemoveChannelModal
-                showRemove={showRemove}
-                handleCloseRemove={handleCloseRemove}
-                currentChannel={currentChannel}
-                setCurrentChannelId={setCurrentChannelId}
-              />
+              <button className="add-button" onClick={handleShow}>
+                {t("channelTitle.addBtn")}
+              </button>
             </div>
+            <AddChannelModal
+              show={show}
+              handleClose={handleClose}
+              setCurrentChannelId={setCurrentChannelId}
+            />
+            <RenameChannelModal
+              showRename={showRename}
+              handleCloseRename={handleCloseRename}
+              currentChannel={currentChannel}
+            />
+            <RemoveChannelModal
+              showRemove={showRemove}
+              handleCloseRemove={handleCloseRemove}
+              currentChannel={currentChannel}
+              setCurrentChannelId={setCurrentChannelId}
+            />
             <ChannelsList
               handleRename={handleRename}
               handleRemove={handleRemove}

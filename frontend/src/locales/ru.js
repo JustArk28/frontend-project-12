@@ -1,7 +1,3 @@
-import RenameChannelModal from "../components/Modals/RenameChannelModal";
-import SignUpPage from "../components/SignUpPage";
-import { addChannel, removeChannel } from "../slices/channelsSlice";
-
 const resources = {
   ru: {
     translation: {
@@ -40,8 +36,8 @@ const resources = {
       image: {
         login: "Приветственное изображение при входе в чат",
         signup: "Изображение при регистрации",
-        NotFound: "404 Данной страницы не существует",
-      }, //
+        notFound: "404 Данной страницы не существует",
+      }, 
       messagesForm: {
         label: "Новое сообщение",
         placeholder: "Введите сообщение...",

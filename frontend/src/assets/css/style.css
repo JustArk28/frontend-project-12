@@ -41,9 +41,6 @@ ul, li {
   justify-self: center;
   width: 85vw;
   height: 84vh;
-  /* height: 70%; */
-  /* height: 600px; */
-  /* width: 1300px; */
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(12, 1fr);
   margin: 30px 40px;
@@ -57,7 +54,6 @@ ul, li {
   grid-row: 1 / -1;
   border-right: 1px solid rgb(210, 209, 209);
   background-color: #f9f8f8;
-  /* background-color: green; */
 }
 .header-of-chat{
   grid-column: 3 / -1;
@@ -66,13 +62,11 @@ ul, li {
   border-bottom: 1px solid rgb(231, 229, 229);
   box-shadow: 5px 1px 5px rgba(204, 203, 203, 0.5);
   height: 100%;
-  /* background-color: red; */
 }
 .chat-area{
   grid-column: 3 / -1;
   grid-row: 2 / -1;
   margin-bottom: 10px;
-  /* background-color: grey; */
 }
 .input-area{
   grid-column: 3 / -1;
@@ -117,66 +111,28 @@ ul, li {
 .counter{
   margin-top: 5px;
 }
-/* .nav-pills .nav-link {
-  color: #333;
-  border-radius: 0;
-  transition: background-color 0.3s, color 0.3s;
-  margin: 0 -10px;
-}
-.nav-pills .nav-link.active {
-  background-color:#6c757d;
-  color: white;
-  border-color: #6c757d; 
-  border-radius: 0;
-  margin: 0 -10px;
-}
-.nav-pills .nav-link.active:hover {
-  background-color:rgb(81, 87.75, 93.75);
- 
-} */
 .btn-group{
   height: 37px;
   width: 95%;
-  
   margin-left: 5px;
-  
   border-radius: 0;
 }
 .dropdown-btn-group{
   height: 37px;
-  /* width: 50%; */
-  /* align-items: left; */
   text-align: left;
   border-radius: 0;
   margin-right: -5px;
 }
 .menu-dropdown{
-  border-radius: 0;
+  border-radius: 0 5px 5px 0;
   margin-right: 3px;
-  /* margin-left: 0; */
 }
-/* #bg-nested-dropdown{
-  height: 32px;
-  background-color: #f9f8f8;
-  color: black;
-  border-color: #f9f8f8;
-}
-#bg-nested-dropdown:active{
-  height: 32px;
-  background-color:#6c757d;
-  color: white;
-  border-color: #6c757d;
-} */
-/* #bg-nested-dropdown:hover{
-  background-color:rgb(81, 87.75, 93.75);
-} */
 .message-history{
   margin-top: 30px;
 }
 .field-for-messages{
   height: 89%;
   overflow-y: auto;
-  /* background-color: grey; */
   margin: 0 45px;
 }
 .input-field-and-button{
@@ -196,9 +152,6 @@ ul, li {
 .username{
   font-weight: bold
 }
-/* .test:hover {
-  background-color: #f9f8f8; 
-} */
 .channel-name {
   width: 11vw; /* Обязательно задайте ширину */
   white-space: nowrap; /* Запрет переноса текста */

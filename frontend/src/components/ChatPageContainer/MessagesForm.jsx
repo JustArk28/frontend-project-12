@@ -3,10 +3,9 @@ import * as formik from "formik";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import filter from "leo-profanity";
-import axios from "axios";
-import routes from "../../routes";
 import { toast } from "react-toastify";
 import { Button } from "react-bootstrap";
+import { sendMessage } from "../../api/axiosRequests";
 
 const MessagesForm = ({ currentChannelId, inputFocus }) => {
   const { Formik, Form, Field } = formik;
@@ -14,36 +13,6 @@ const MessagesForm = ({ currentChannelId, inputFocus }) => {
   const inputRef = useRef(null);
   const { token, username } = useSelector((state) => state.authStore);
   const [loading, setLoading] = useState(false);
-
-  const sendMessage = async (message, resetForm) => {
-    setLoading(true);
-    try {
-      const newMessage = {
-        body: filter.clean(message.trim()),
-        channelId: currentChannelId,
-        username: username,
-      };
-      await axios.post(routes.addMessage(), newMessage, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      resetForm();
-      inputRef.current.focus();
-    } catch (err) {
-      console.log(err);
-      setTimeout(() => {
-        sendMessage();
-      }, 5000);
-      if (err.message === "Network Error") {
-        toast.error(t("toastify.error.connectionError"));
-      } else {
-        toast.error(t("toastify.error.error"));
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     inputRef.current.focus();
@@ -55,24 +24,36 @@ const MessagesForm = ({ currentChannelId, inputFocus }) => {
         initialValues={{ message: "" }}
         onSubmit={({ message }, { resetForm }) => {
           if (message.trim().length > 0) {
-            sendMessage(message, resetForm);
+            sendMessage(
+              message,
+              resetForm,
+              setLoading,              
+              t,              
+              currentChannelId,
+              token,
+              username,
+              inputRef,
+            );
           }
         }}
       >
         {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
             <div className="input-field-and-button">
-              <label className="input-size" aria-label={t("messagesForm.label")}>
-              <Field
-                type="text"
-                name="message"
-                className="form-control"
-                placeholder={t("messagesForm.placeholder")}
-                value={values.message}
-                onChange={handleChange}
-                ref={inputRef}
-                autoComplete="off"
-              />
+              <label
+                className="input-size"
+                aria-label={t("messagesForm.label")}
+              >
+                <Field
+                  type="text"
+                  name="message"
+                  className="form-control"
+                  placeholder={t("messagesForm.placeholder")}
+                  value={values.message}
+                  onChange={handleChange}
+                  ref={inputRef}
+                  autoComplete="off"
+                />
               </label>
               <Button type="submit" disabled={loading}>
                 {t("messagesForm.submitBtn")}

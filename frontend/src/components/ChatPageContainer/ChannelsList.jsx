@@ -18,8 +18,7 @@ const ChannelsList = ({
   const { t } = useTranslation();
   const channels = useSelector((state) => state.channelsStore.channels);
   return (
-    <div className="channel-list">
-      {/* <div className="flex-column"> */}
+    <div className="channel-list">      
       {channels.map(({ id, name, removable }) => {
         if (removable) {
           return (
@@ -49,8 +48,7 @@ const ChannelsList = ({
                   }
                   as={ButtonGroup}
                   id="bg-nested-dropdown"
-                >
-                  {/* <span className="">{t("dropdownBtn.description")}</span> */}
+                >                 
                   <Dropdown.Item id={id} onClick={handleRemove}>
                     {t("dropdownBtn.removeBtn")}
                   </Dropdown.Item>
