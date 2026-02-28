@@ -33,18 +33,19 @@ const MessagesBox = ({ currentChannelId }) => {
         <div className="field-for-messages">
           <Tab.Content>
             {channels.map(({ id }) => {
+              const messagesInThisChannel = messages.filter(
+                (msg) => msg.channelId === id,
+              );
               return (
                 <Tab.Pane key={id} eventKey={id}>
-                  {messagesForRoom.length > 0 ? (
+                  {messagesInThisChannel.length > 0 ? (
                     <ul className="message-history">
-                      {messagesForRoom.map(({ id, username, body }) => {
-                        return (
-                          <li key={id}>
-                            <span className="username">{username}: </span>
-                            <span>{body}</span>
-                          </li>
-                        );
-                      })}
+                      {messagesInThisChannel.map(({ id: msgId, username, body }) => (
+                        <li key={msgId}>
+                          <span className="username">{username}: </span>
+                          <span>{body}</span>
+                        </li>
+                      ))}
                     </ul>
                   ) : null}
                 </Tab.Pane>
