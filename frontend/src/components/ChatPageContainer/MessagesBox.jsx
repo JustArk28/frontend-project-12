@@ -39,20 +39,20 @@ const MessagesBox = ({ currentChannelId }) => {
                   <>
                     {messagesForRoom.length > 0
                       ? (
-                         <ul className="message-history">
-                           {messagesForRoom.map(
-                             ({ id: msgId, username, body }) => (
-                               <li key={msgId}>
-                                 <span className="username">
-                                   {username}
-                                   {': '}
-                                 </span>
-                                 <span>{body}</span>
-                               </li>
-                             ),
-                           )}
-                         </ul>
-                       )
+                          <ul className="message-history">
+                            {messagesForRoom.map(
+                              ({ id: msgId, username, body }) => (
+                                <li key={msgId}>
+                                  <span className="username">
+                                    {username}
+                                    {': '}
+                                  </span>
+                                  <span>{body}</span>
+                                </li>
+                              ),
+                            )}
+                          </ul>
+                        )
                       : null}
                   </>
                 )}

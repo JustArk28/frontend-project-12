@@ -25,14 +25,14 @@ const MainPage = ({ children }) => {
           {state.token === null
             ? null
             : (
-               <Button
-                 className="logOutBtn"
-                 type="submit"
-                 onClick={logOutFromChat}
-               >
-                 {t('mainPage.exitBtn')}
-               </Button>
-             )}
+                <Button
+                  className="logOutBtn"
+                  type="submit"
+                  onClick={logOutFromChat}
+                >
+                  {t('mainPage.exitBtn')}
+                </Button>
+              )}
         </Container>
       </Navbar>
       {children}
