@@ -16,7 +16,7 @@ const ChannelsList = ({
   setInputFocus,
 }) => {
   const { t } = useTranslation()
-  const channels = useSelector((state) => state.channelsStore.channels)
+  const channels = useSelector(state => state.channelsStore.channels)
   return (
     <div className="channel-list">
       <Nav>
@@ -40,7 +40,8 @@ const ChannelsList = ({
                       setInputFocus(true)
                     )}
                   >
-                    # {name}
+                    {'# '}
+                    {name}
                   </Button>
 
                   <div className="hidden-title">
@@ -78,7 +79,8 @@ const ChannelsList = ({
                 }
                 onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
               >
-                # {name}
+                {'# '}
+                {name}
               </Button>
             </li>
           )

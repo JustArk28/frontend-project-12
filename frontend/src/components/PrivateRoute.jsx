@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
     const { token, username } = JSON.parse(user)
     dispatch(logIn({ token, username }))
   }
-  const token = useSelector((state) => state.authStore.token)
+  const token = useSelector(state => state.authStore.token)
 
   const navigate = useNavigate()
 

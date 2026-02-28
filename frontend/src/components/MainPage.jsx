@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 const MainPage = ({ children }) => {
   const { t } = useTranslation()
-  const state = useSelector((state) => state.authStore)
+  const state = useSelector(state => state.authStore)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -22,14 +22,16 @@ const MainPage = ({ children }) => {
           <Navbar.Brand className="nameOfChat" href="/">
             {t('mainPage.title')}
           </Navbar.Brand>
-          {state.token === null ? null : (
-            <Button
-              className="logOutBtn"
-              type="submit"
-              onClick={logOutFromChat}
-            >
-              {t('mainPage.exitBtn')}
-            </Button>
+          {state.token === null 
+            ? null 
+            : (
+              <Button
+                className="logOutBtn"
+                type="submit"
+                onClick={logOutFromChat}
+              >
+                {t('mainPage.exitBtn')}
+              </Button>
           )}
         </Container>
       </Navbar>

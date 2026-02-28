@@ -6,9 +6,8 @@ export default {
   getChannels: () => [apiPath, 'channels'].join('/'),
   addMessage: () => [apiPath, 'messages'].join('/'),
   getMessages: () => [apiPath, 'messages'].join('/'),
-  removeMessages: (id) => [apiPath, 'messages', id].join('/'),
+  removeMessages: id => [apiPath, 'messages', id].join('/'),
   addChannel: () => [apiPath, 'channels'].join('/'),
-  getChannels: () => [apiPath, 'channels'].join('/'),
-  editChannel: (id) => [apiPath, 'channels', id].join('/'),
-  removeChannel: (id) => [apiPath, 'channels', id].join('/'),
+  editChannel: id => [apiPath, 'channels', id].join('/'),
+  removeChannel: id => [apiPath, 'channels', id].join('/'),
 }

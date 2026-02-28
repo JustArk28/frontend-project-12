@@ -32,8 +32,7 @@ const SignUpPage = () => {
       .required(t('signUpPage.errors.passwordConfirm'))
       .oneOf([yup.ref('password')], t('signUpPage.errors.passwordConfirm')),
   })
-  // console.log('auth', auth)
-  console.log('ls', localStorage)
+
   useEffect(() => {
     inputRef.current.focus()
   }, [])
@@ -44,7 +43,6 @@ const SignUpPage = () => {
           <div className="my-body-card">
             <img
               className="img"
-              variant="left"
               src="src/assets/avatar-2.jpg"
               alt={t('image.signup')}
             />
@@ -135,14 +133,11 @@ const SignUpPage = () => {
                         onChange={handleChange}
                         required
                         isInvalid={
-                          (touched.confirmPassword &&
-                            !!errors.confirmPassword) ||
-                          userExist
+                          (touched.confirmPassword && !!errors.confirmPassword) || userExist
                         }
                       />
                       <Form.Control.Feedback tooltip type="invalid">
-                        {errors.confirmPassword ||
-                          t('signUpPage.errors.usernameExist')}
+                        {errors.confirmPassword || t('signUpPage.errors.usernameExist')}
                       </Form.Control.Feedback>
                     </FloatingLabel>
                   </Form.Group>

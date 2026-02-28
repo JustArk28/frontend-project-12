@@ -2,16 +2,14 @@ import { useState, useEffect, useRef } from 'react'
 import * as formik from 'formik'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
-import filter from 'leo-profanity'
-import { toast } from 'react-toastify'
 import { Button } from 'react-bootstrap'
 import { sendMessage } from '../../api/axiosRequests'
 
-const MessagesForm = ({ currentChannelId, inputFocus }) => {
+const MessagesForm = ({ currentChannelId }) => {
   const { Formik, Form, Field } = formik
   const { t } = useTranslation()
   const inputRef = useRef(null)
-  const { token, username } = useSelector((state) => state.authStore)
+  const { token, username } = useSelector(state => state.authStore)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {

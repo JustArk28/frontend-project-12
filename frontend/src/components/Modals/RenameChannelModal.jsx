@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import * as formik from 'formik'
@@ -14,9 +14,9 @@ const RenameChannelModal = ({
   const { t } = useTranslation()
   const inputRef = useRef(null)
   const [loading, setLoading] = useState(false)
-  const { token } = useSelector((state) => state.authStore)
-  const channels = useSelector((state) => state.channelsStore.channels)
-  const channelsNames = channels.map((channel) => channel.name)
+  const { token } = useSelector(state => state.authStore)
+  const channels = useSelector(state => state.channelsStore.channels)
+  const channelsNames = channels.map(channel => channel.name)
   const { Formik } = formik
   const schema = yup.object().shape({
     newChannelName: yup

@@ -39,19 +39,19 @@ const ChatPage = () => {
   const handleCloseRemove = () => setShowRemove(false)
   const handleShowRemove = () => setShowRemove(true)
 
-  const { token } = useSelector((state) => state.authStore)
-  const channels = useSelector((state) => state.channelsStore.channels)
+  const { token } = useSelector(state => state.authStore)
+  const channels = useSelector(state => state.channelsStore.channels)
 
   const dispatch = useDispatch()
 
   const handleRename = (e) => {
-    const channel = channels.find((channel) => channel.id === e.target.id)
+    const channel = channels.find(channel => channel.id === e.target.id)
     setCurrentChannel(channel)
     handleShowRename()
   }
 
   const handleRemove = (e) => {
-    const channel = channels.find((channel) => channel.id === e.target.id)
+    const channel = channels.find(channel => channel.id === e.target.id)
     setCurrentChannel(channel)
     handleShowRemove()
   }
@@ -92,7 +92,7 @@ const ChatPage = () => {
       <div className="chat-body">
         <Tab.Container
           activeKey={currentChannelId}
-          onSelect={(currentChannelId) => setCurrentChannelId(currentChannelId)}
+          onSelect={currentChannelId => setCurrentChannelId(currentChannelId)}
           id="list-group-tabs-example"
         >
           <div className="channels">
@@ -129,7 +129,6 @@ const ChatPage = () => {
           <MessagesBox currentChannelId={currentChannelId} />
           <MessagesForm
             currentChannelId={currentChannelId}
-            inputFocus={inputFocus}
           />
         </Tab.Container>
       </div>

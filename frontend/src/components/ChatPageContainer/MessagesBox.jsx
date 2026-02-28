@@ -16,7 +16,8 @@ const MessagesBox = ({ currentChannelId }) => {
           {channels.map(({ id, name }) => {
             return (
               <Tab.Pane key={id} eventKey={id} className="name-of-chat">
-                # {name}
+                {'# '}
+                {name}
               </Tab.Pane>
             )
           })}
@@ -36,18 +37,23 @@ const MessagesBox = ({ currentChannelId }) => {
               <Tab.Pane key={id} eventKey={id}>
                 {id === currentChannelId && (
                   <>
-                    {messagesForRoom.length > 0 ? (
-                      <ul className="message-history">
-                        {messagesForRoom.map(
-                          ({ id: msgId, username, body }) => (
-                            <li key={msgId}>
-                              <span className="username">{username}: </span>
-                              <span>{body}</span>
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                    ) : null}
+                    {messagesForRoom.length > 0 
+                      ? (
+                        <ul className="message-history">
+                          {messagesForRoom.map(
+                            ({ id: msgId, username, body }) => (
+                              <li key={msgId}>
+                                <span className="username">
+                                  {username}
+                                  {': '}
+                                </span>
+                                <span>{body}</span>
+                              </li>
+                            ),
+                          )}
+                        </ul>
+                      ) 
+                      : null}
                   </>
                 )}
               </Tab.Pane>

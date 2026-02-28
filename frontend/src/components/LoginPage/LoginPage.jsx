@@ -32,7 +32,6 @@ const LoginPage = () => {
           <div className="my-body-card">
             <img
               className="img"
-              variant="left"
               src="src/assets/avatar-1.jpg"
               alt={t('image.login')}
             />
@@ -111,7 +110,8 @@ const LoginPage = () => {
             </Formik>
           </div>
           <div className="registration-link-area">
-            {t('logInPage.question')}{' '}
+            {t('logInPage.question')}
+            {' '}
             <a href="/signup">{t('logInPage.registration')}</a>
           </div>
         </div>

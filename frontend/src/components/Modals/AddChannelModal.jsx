@@ -11,9 +11,9 @@ const AddChannelModal = ({ show, handleClose, setCurrentChannelId }) => {
   const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const inputRef = useRef()
-  const { token } = useSelector((state) => state.authStore)
-  const channels = useSelector((state) => state.channelsStore.channels)
-  const channelsNames = channels.map((channel) => channel.name)
+  const { token } = useSelector(state => state.authStore)
+  const channels = useSelector(state => state.channelsStore.channels)
+  const channelsNames = channels.map(channel => channel.name)
   const { Formik } = formik
   const schema = yup.object().shape({
     channelName: yup
