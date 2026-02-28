@@ -13,7 +13,6 @@ const ChannelsList = ({
   handleRemove,
   currentChannelId,
   setCurrentChannelId,
-  setInputFocus,
 }) => {
   const { t } = useTranslation()
   const channels = useSelector(state => state.channelsStore.channels)
@@ -35,10 +34,7 @@ const ChannelsList = ({
                         ? 'btn btn-secondary dropdown-btn-group'
                         : 'btn outline-dark dropdown-btn-group'
                     }
-                    onClick={() => (
-                      setCurrentChannelId(id),
-                      setInputFocus(true)
-                    )}
+                    onClick={() => setCurrentChannelId(id)}
                   >
                     {'# '}
                     {name}
@@ -77,7 +73,7 @@ const ChannelsList = ({
                     ? 'btn btn-secondary btn-group'
                     : 'btn outline-dark btn-group'
                 }
-                onClick={() => (setCurrentChannelId(id), setInputFocus(true))}
+                onClick={() => setCurrentChannelId(id)}
               >
                 {'# '}
                 {name}

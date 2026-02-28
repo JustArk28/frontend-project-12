@@ -22,17 +22,17 @@ const MainPage = ({ children }) => {
           <Navbar.Brand className="nameOfChat" href="/">
             {t('mainPage.title')}
           </Navbar.Brand>
-          {state.token === null 
-            ? null 
+          {state.token === null
+            ? null
             : (
-              <Button
-                className="logOutBtn"
-                type="submit"
-                onClick={logOutFromChat}
-              >
-                {t('mainPage.exitBtn')}
-              </Button>
-          )}
+               <Button
+                 className="logOutBtn"
+                 type="submit"
+                 onClick={logOutFromChat}
+               >
+                 {t('mainPage.exitBtn')}
+               </Button>
+             )}
         </Container>
       </Navbar>
       {children}

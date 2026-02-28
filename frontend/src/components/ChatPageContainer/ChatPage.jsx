@@ -24,7 +24,6 @@ const socket = io()
 const ChatPage = () => {
   const { t } = useTranslation()
   const [currentChannelId, setCurrentChannelId] = useState('1')
-  const [inputFocus, setInputFocus] = useState(true)
   const [currentChannel, setCurrentChannel] = useState({})
 
   const [show, setShow] = useState(false)
@@ -123,7 +122,6 @@ const ChatPage = () => {
               handleRemove={handleRemove}
               currentChannelId={currentChannelId}
               setCurrentChannelId={setCurrentChannelId}
-              setInputFocus={setInputFocus}
             />
           </div>
           <MessagesBox currentChannelId={currentChannelId} />

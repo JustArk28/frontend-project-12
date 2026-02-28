@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 
 const MessagesBox = ({ currentChannelId }) => {
   const { t } = useTranslation()
-  const channels = useSelector((state) => state.channelsStore.channels)
-  const messages = useSelector((state) => state.messagesStore.messages)
+  const channels = useSelector(state => state.channelsStore.channels)
+  const messages = useSelector(state => state.messagesStore.messages)
   const messagesForRoom = messages.filter(
     ({ channelId }) => channelId === currentChannelId,
   )
@@ -37,22 +37,22 @@ const MessagesBox = ({ currentChannelId }) => {
               <Tab.Pane key={id} eventKey={id}>
                 {id === currentChannelId && (
                   <>
-                    {messagesForRoom.length > 0 
+                    {messagesForRoom.length > 0
                       ? (
-                        <ul className="message-history">
-                          {messagesForRoom.map(
-                            ({ id: msgId, username, body }) => (
-                              <li key={msgId}>
-                                <span className="username">
-                                  {username}
-                                  {': '}
-                                </span>
-                                <span>{body}</span>
-                              </li>
-                            ),
-                          )}
-                        </ul>
-                      ) 
+                         <ul className="message-history">
+                           {messagesForRoom.map(
+                             ({ id: msgId, username, body }) => (
+                               <li key={msgId}>
+                                 <span className="username">
+                                   {username}
+                                   {': '}
+                                 </span>
+                                 <span>{body}</span>
+                               </li>
+                             ),
+                           )}
+                         </ul>
+                       )
                       : null}
                   </>
                 )}
