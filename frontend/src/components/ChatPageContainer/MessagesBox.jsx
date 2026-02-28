@@ -59,6 +59,7 @@
 
 // export default MessagesBox;
 
+
 import { useSelector } from "react-redux";
 import { Tab } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -93,25 +94,24 @@ const MessagesBox = ({ currentChannelId }) => {
       <div className="chat-area">
         <div className="field-for-messages">
           <Tab.Content>
-            {channels.map(({ id }) => {
-              const messagesInThisChannel = messages.filter(
-                (msg) => msg.channelId === id,
-              );
-              return (
-                <Tab.Pane key={id} eventKey={id}>
-                  {messagesInThisChannel.length > 0 ? (
-                    <ul className="message-history">
-                      {messagesInThisChannel.map(({ id: msgId, username, body }) => (
-                        <li key={msgId}>
-                          <span className="username">{username}: </span>
-                          <span>{body}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </Tab.Pane>
-              );
-            })}
+            {channels.map(({ id }) => (
+              <Tab.Pane key={id} eventKey={id}>
+                {id === currentChannelId && (
+                  <>
+                    {messagesForRoom.length > 0 ? (
+                      <ul className="message-history">
+                        {messagesForRoom.map(({ id: msgId, username, body }) => (
+                          <li key={msgId}>
+                            <span className="username">{username}: </span>
+                            <span>{body}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </>
+                )}
+              </Tab.Pane>
+            ))}
           </Tab.Content>
         </div>
       </div>
