@@ -1,31 +1,30 @@
-import { React, useEffect, useRef, useState } from "react";
-import { Form, Button, FloatingLabel } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
-import * as formik from "formik";
-import * as yup from "yup";
-import "./LoginPage.css";
-import { useSelector, useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import { userLogIn } from "../../api/axiosRequests";
+import { useEffect, useRef, useState } from 'react'
+import { Form, Button, FloatingLabel } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import * as formik from 'formik'
+import * as yup from 'yup'
+import './LoginPage.css'
+import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { userLogIn } from '../../api/axiosRequests'
 
 const LoginPage = () => {
-  const { t } = useTranslation();
-  const inputRef = useRef();
-  const [authFailed, setAuthFailed] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { Formik } = formik;
+  const { t } = useTranslation()
+  const inputRef = useRef()
+  const [authFailed, setAuthFailed] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { Formik } = formik
 
   const schema = yup.object().shape({
     username: yup.string(),
     password: yup.string(),
-  });
-  // console.log('auth', auth)
-  // console.log('ls', localStorage)
+  })
+
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    inputRef.current.focus()
+  }, [])
   return (
     <>
       <div className="div-position">
@@ -35,13 +34,13 @@ const LoginPage = () => {
               className="img"
               variant="left"
               src="src/assets/avatar-1.jpg"
-              alt={t("image.login")}
+              alt={t('image.login')}
             />
             <Formik
               validationSchema={schema}
-              initialValues={{ username: "", password: "" }}
+              initialValues={{ username: '', password: '' }}
               onSubmit={(values) => {
-                setAuthFailed(false);
+                setAuthFailed(false)
                 userLogIn(
                   values,
                   setLoading,
@@ -49,24 +48,24 @@ const LoginPage = () => {
                   dispatch,
                   setAuthFailed,
                   inputRef,
-                );
+                )
               }}
             >
               {({ handleSubmit, handleChange, values }) => (
                 <Form onSubmit={handleSubmit} className="logInForm">
-                  <div className="enter">{t("logInPage.title")}</div>
+                  <div className="enter">{t('logInPage.title')}</div>
                   <br />
                   <Form.Group>
                     <FloatingLabel
                       controlId="floatingUsername"
-                      label={t("logInPage.username")}
+                      label={t('logInPage.username')}
                     >
                       <Form.Control
                         size="lg"
                         type="text"
                         name="username"
                         className="form-control"
-                        placeholder={t("logInPage.username")}
+                        placeholder={t('logInPage.username')}
                         value={values.username}
                         onChange={handleChange}
                         required
@@ -79,21 +78,21 @@ const LoginPage = () => {
                   <Form.Group>
                     <FloatingLabel
                       controlId="floatingPassword"
-                      label={t("logInPage.password")}
+                      label={t('logInPage.password')}
                     >
                       <Form.Control
                         size="lg"
                         type="password"
                         name="password"
                         className="form-control"
-                        placeholder={t("logInPage.password")}
+                        placeholder={t('logInPage.password')}
                         value={values.password}
                         onChange={handleChange}
                         required
                         isInvalid={authFailed}
                       />
                       <Form.Control.Feedback tooltip type="invalid">
-                        {t("logInPage.feedback")}
+                        {t('logInPage.feedback')}
                       </Form.Control.Feedback>
                     </FloatingLabel>
                   </Form.Group>
@@ -104,7 +103,7 @@ const LoginPage = () => {
                       type="submit"
                       disabled={loading}
                     >
-                      {t("logInPage.enterBtn")}
+                      {t('logInPage.enterBtn')}
                     </Button>
                   </div>
                 </Form>
@@ -112,13 +111,13 @@ const LoginPage = () => {
             </Formik>
           </div>
           <div className="registration-link-area">
-            {t("logInPage.question")}{" "}
-            <a href="/signup">{t("logInPage.registration")}</a>
+            {t('logInPage.question')}{' '}
+            <a href="/signup">{t('logInPage.registration')}</a>
           </div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

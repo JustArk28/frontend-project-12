@@ -1,42 +1,42 @@
-import { useEffect, useRef, useState } from "react";
-import { Form, Button, FloatingLabel } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
-import * as formik from "formik";
-import * as yup from "yup";
-import "./LoginPage/LoginPage.css";
-import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
-import { userSignUp } from "../api/axiosRequests";
+import { useEffect, useRef, useState } from 'react'
+import { Form, Button, FloatingLabel } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import * as formik from 'formik'
+import * as yup from 'yup'
+import './LoginPage/LoginPage.css'
+import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+import { userSignUp } from '../api/axiosRequests'
 
 const SignUpPage = () => {
-  const { t } = useTranslation();
-  const inputRef = useRef();
-  const [userExist, setUserExist] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { Formik } = formik;
+  const { t } = useTranslation()
+  const inputRef = useRef()
+  const [userExist, setUserExist] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { Formik } = formik
 
   const schema = yup.object().shape({
     username: yup
       .string()
-      .required(t("signUpPage.errors.required"))
-      .min(3, t("signUpPage.errors.usernameRange"))
-      .max(20, t("signUpPage.errors.usernameRange")),
+      .required(t('signUpPage.errors.required'))
+      .min(3, t('signUpPage.errors.usernameRange'))
+      .max(20, t('signUpPage.errors.usernameRange')),
     password: yup
       .string()
-      .required(t("signUpPage.errors.required"))
-      .min(6, t("signUpPage.errors.passwordRange")),
+      .required(t('signUpPage.errors.required'))
+      .min(6, t('signUpPage.errors.passwordRange')),
     confirmPassword: yup
       .string()
-      .required(t("signUpPage.errors.passwordConfirm"))
-      .oneOf([yup.ref("password")], t("signUpPage.errors.passwordConfirm")),
-  });
+      .required(t('signUpPage.errors.passwordConfirm'))
+      .oneOf([yup.ref('password')], t('signUpPage.errors.passwordConfirm')),
+  })
   // console.log('auth', auth)
-  console.log("ls", localStorage);
+  console.log('ls', localStorage)
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    inputRef.current.focus()
+  }, [])
   return (
     <>
       <div className="div-position">
@@ -46,15 +46,15 @@ const SignUpPage = () => {
               className="img"
               variant="left"
               src="src/assets/avatar-2.jpg"
-              alt={t("image.signup")}
+              alt={t('image.signup')}
             />
 
             <Formik
               validationSchema={schema}
               initialValues={{
-                username: "",
-                password: "",
-                confirmPassword: "",
+                username: '',
+                password: '',
+                confirmPassword: '',
               }}
               onSubmit={({ username, password }) => {
                 userSignUp(
@@ -65,24 +65,24 @@ const SignUpPage = () => {
                   password,
                   dispatch,
                   inputRef,
-                );
+                )
               }}
             >
               {({ handleSubmit, handleChange, values, errors, touched }) => (
                 <Form onSubmit={handleSubmit} className="logInForm">
-                  <div className="enter">{t("signUpPage.title")}</div>
+                  <div className="enter">{t('signUpPage.title')}</div>
                   <br />
                   <Form.Group>
                     <FloatingLabel
                       controlId="floatingUsername1"
-                      label={t("signUpPage.username")}
+                      label={t('signUpPage.username')}
                     >
                       <Form.Control
                         size="lg"
                         type="text"
                         name="username"
                         className="form-control"
-                        placeholder={t("signUpPage.username")}
+                        placeholder={t('signUpPage.username')}
                         value={values.username}
                         onChange={handleChange}
                         ref={inputRef}
@@ -100,14 +100,14 @@ const SignUpPage = () => {
                   <Form.Group>
                     <FloatingLabel
                       controlId="floatingPassword1"
-                      label={t("signUpPage.password")}
+                      label={t('signUpPage.password')}
                     >
                       <Form.Control
                         size="lg"
                         type="password"
                         name="password"
                         className="form-control"
-                        placeholder={t("signUpPage.password")}
+                        placeholder={t('signUpPage.password')}
                         value={values.password}
                         onChange={handleChange}
                         isInvalid={
@@ -123,14 +123,14 @@ const SignUpPage = () => {
                   <Form.Group>
                     <FloatingLabel
                       controlId="floatingPassword"
-                      label={t("signUpPage.confirmPassword")}
+                      label={t('signUpPage.confirmPassword')}
                     >
                       <Form.Control
                         size="lg"
                         type="password"
                         name="confirmPassword"
                         className="form-control"
-                        placeholder={t("signUpPage.confirmPassword")}
+                        placeholder={t('signUpPage.confirmPassword')}
                         value={values.passwordConfirmation}
                         onChange={handleChange}
                         required
@@ -142,7 +142,7 @@ const SignUpPage = () => {
                       />
                       <Form.Control.Feedback tooltip type="invalid">
                         {errors.confirmPassword ||
-                          t("signUpPage.errors.usernameExist")}
+                          t('signUpPage.errors.usernameExist')}
                       </Form.Control.Feedback>
                     </FloatingLabel>
                   </Form.Group>
@@ -153,7 +153,7 @@ const SignUpPage = () => {
                       type="submit"
                       disabled={loading}
                     >
-                      {t("signUpPage.registrationBtn")}
+                      {t('signUpPage.registrationBtn')}
                     </Button>
                   </div>
                 </Form>
@@ -163,7 +163,7 @@ const SignUpPage = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default SignUpPage;
+export default SignUpPage

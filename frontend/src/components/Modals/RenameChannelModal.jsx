@@ -1,38 +1,38 @@
-import { useState, useEffect, useRef } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import * as formik from "formik";
-import * as yup from "yup";
-import { useTranslation } from "react-i18next";
-import { renameChannel } from "../../api/axiosRequests";
+import { useState, useEffect, useRef } from 'react'
+import { Button, Modal, Form } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
+import * as formik from 'formik'
+import * as yup from 'yup'
+import { useTranslation } from 'react-i18next'
+import { renameChannel } from '../../api/axiosRequests'
 
 const RenameChannelModal = ({
   showRename,
   handleCloseRename,
   currentChannel,
 }) => {
-  const { t } = useTranslation();
-  const inputRef = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const { token } = useSelector((state) => state.authStore);
-  const channels = useSelector((state) => state.channelsStore.channels);
-  const channelsNames = channels.map((channel) => channel.name);
-  const { Formik } = formik;
+  const { t } = useTranslation()
+  const inputRef = useRef(null)
+  const [loading, setLoading] = useState(false)
+  const { token } = useSelector((state) => state.authStore)
+  const channels = useSelector((state) => state.channelsStore.channels)
+  const channelsNames = channels.map((channel) => channel.name)
+  const { Formik } = formik
   const schema = yup.object().shape({
     newChannelName: yup
       .string()
       .trim()
-      .required(t("validation.required"))
-      .min(3, t("validation.range"))
-      .max(20, t("validation.range"))
-      .notOneOf(channelsNames, t("validation.notOneOf")),
-  });
+      .required(t('validation.required'))
+      .min(3, t('validation.range'))
+      .max(20, t('validation.range'))
+      .notOneOf(channelsNames, t('validation.notOneOf')),
+  })
 
   const focusInput = () => {
     if (inputRef.current) {
-      inputRef.current.select();
+      inputRef.current.select()
     }
-  };
+  }
 
   return (
     <>
@@ -43,7 +43,7 @@ const RenameChannelModal = ({
         className="modal"
       >
         <Modal.Header closeButton>
-          <Modal.Title>{t("modal.renameChannel.title")}</Modal.Title>
+          <Modal.Title>{t('modal.renameChannel.title')}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Formik
@@ -58,14 +58,14 @@ const RenameChannelModal = ({
                 t,
                 token,
                 handleCloseRename,
-              );
+              )
             }}
           >
             {({ handleSubmit, handleChange, values, errors, touched }) => (
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-2">
                   <label htmlFor="newChannelName" className="input-size">
-                    {t("modal.label")}
+                    {t('modal.label')}
                   </label>
                   <Form.Control
                     type="text"
@@ -88,10 +88,10 @@ const RenameChannelModal = ({
                     variant="secondary"
                     onClick={handleCloseRename}
                   >
-                    {t("modal.renameChannel.closeBtn")}
+                    {t('modal.renameChannel.closeBtn')}
                   </Button>
                   <Button variant="primary" type="submit" disabled={loading}>
-                    {t("modal.renameChannel.submitBtn")}
+                    {t('modal.renameChannel.submitBtn')}
                   </Button>
                 </div>
               </Form>
@@ -100,7 +100,7 @@ const RenameChannelModal = ({
         </Modal.Body>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default RenameChannelModal;
+export default RenameChannelModal

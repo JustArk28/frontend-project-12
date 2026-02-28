@@ -1,15 +1,14 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "../assets/css/style.css";
-import store from "../slices/index.js";
-import LoginPage from "./LoginPage/LoginPage.jsx";
-import SignUpPage from "./SignUpPage.jsx";
-import ErrorPage from "./ErrorPage.jsx";
-import MainPage from "./MainPage.jsx";
-import ChatPage from "./ChatPageContainer/ChatPage.jsx";
-import PrivateRoute from "./PrivateRoute.jsx";
-import { ToastContainer, Bounce } from "react-toastify";
+import { Provider } from 'react-redux'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import '../assets/css/style.css'
+import store from '../slices/index.js'
+import LoginPage from './LoginPage/LoginPage.jsx'
+import SignUpPage from './SignUpPage.jsx'
+import ErrorPage from './ErrorPage.jsx'
+import MainPage from './MainPage.jsx'
+import ChatPage from './ChatPageContainer/ChatPage.jsx'
+import PrivateRoute from './PrivateRoute.jsx'
+import { ToastContainer, Bounce } from 'react-toastify'
 
 function App() {
   return (
@@ -47,7 +46,7 @@ function App() {
         </Provider>
       </BrowserRouter>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

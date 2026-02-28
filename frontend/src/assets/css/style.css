@@ -1,4 +1,4 @@
-@import "reset.css";
+@import 'reset.css';
 
 html {
   position: relative;
@@ -158,7 +158,7 @@ li {
 .username {
   font-weight: bold;
 }
-.default-channel-name{
+.default-channel-name {
   width: 98%;
 }
 .channel-name {
