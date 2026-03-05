@@ -113,7 +113,8 @@ export const sendMessage = async (
         )
       }, 10000)
       toast.error(t('toastify.error.connectionError'))
-    } else {
+    }
+    else {
       toast.error(t('toastify.error.error'))
     }
   }
@@ -151,7 +152,8 @@ export const addNewChannel = async (
     console.log(err)
     if (err.message === 'Network Error') {
       toast.error(t('toastify.error.connectionError'))
-    } else {
+    }
+    else {
       toast.error(t('toastify.error.error'))
     }
   }
@@ -188,7 +190,8 @@ export const renameChannel = async (
     console.log(err)
     if (err.message === 'Network Error') {
       toast.error(t('toastify.error.connectionError'))
-    } else {
+    }
+    else {
       toast.error(t('toastify.error.error'))
     }
   }
@@ -233,7 +236,8 @@ export const removeChannel = async (
         console.log('remove messages', err)
         if (err.message === 'Network Error') {
           toast.error(t('toastify.error.connectionError'))
-        } else {
+        }
+        else {
           toast.error(t('toastify.error.error'))
         }
       }
@@ -243,7 +247,8 @@ export const removeChannel = async (
     console.log(err)
     if (err.message === 'Network Error') {
       toast.error(t('toastify.error.connectionError'))
-    } else {
+    }
+    else {
       toast.error(t('toastify.error.error'))
     }
   }
