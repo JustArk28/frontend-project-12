@@ -22,16 +22,14 @@ export const userLogIn = async (
     const user = localStorage.getItem('user')
     const { token, username } = JSON.parse(user)
     dispatch(logIn({ token, username }))
-  }
-  catch (err) {
+  } catch (err) {
     if (err.status === 401) {
       setAuthFailed(true)
       inputRef.current.select()
       return
     }
     throw err
-  }
-  finally {
+  } finally {
     setLoading(false)
   }
 }
@@ -57,8 +55,7 @@ export const userSignUp = async (
         const { token, username } = JSON.parse(user)
         dispatch(logIn({ token, username }))
       })
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err)
     if (err.status === 409) {
       setUserExist(true)
@@ -66,8 +63,7 @@ export const userSignUp = async (
       return
     }
     throw err
-  }
-  finally {
+  } finally {
     setLoading(false)
   }
 }
@@ -96,20 +92,26 @@ export const sendMessage = async (
     })
     resetForm()
     inputRef.current.focus()
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err)
-    setTimeout(() => {
-      sendMessage()
-    }, 5000)
     if (err.message === 'Network Error') {
+      setTimeout(() => {
+        sendMessage(
+          message,
+          resetForm,
+          setLoading,
+          t,
+          currentChannelId,
+          token,
+          username,
+          inputRef,
+        )
+      }, 10000)
       toast.error(t('toastify.error.connectionError'))
-    }
-    else {
+    } else {
       toast.error(t('toastify.error.error'))
     }
-  }
-  finally {
+  } finally {
     setLoading(false)
   }
 }
@@ -138,17 +140,14 @@ export const addNewChannel = async (
           toast.success(t('toastify.success.add'))
         }
       })
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err)
     if (err.message === 'Network Error') {
       toast.error(t('toastify.error.connectionError'))
-    }
-    else {
+    } else {
       toast.error(t('toastify.error.error'))
     }
-  }
-  finally {
+  } finally {
     setLoading(false)
   }
 }
@@ -176,17 +175,14 @@ export const renameChannel = async (
           handleCloseRename()
         }
       })
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err)
     if (err.message === 'Network Error') {
       toast.error(t('toastify.error.connectionError'))
-    }
-    else {
+    } else {
       toast.error(t('toastify.error.error'))
     }
-  }
-  finally {
+  } finally {
     setLoading(false)
   }
 }
@@ -222,28 +218,23 @@ export const removeChannel = async (
             Authorization: `Bearer ${token}`,
           },
         })
-      }
-      catch (err) {
+      } catch (err) {
         console.log('remove messages', err)
         if (err.message === 'Network Error') {
           toast.error(t('toastify.error.connectionError'))
-        }
-        else {
+        } else {
           toast.error(t('toastify.error.error'))
         }
       }
     })
-  }
-  catch (err) {
+  } catch (err) {
     console.log(err)
     if (err.message === 'Network Error') {
       toast.error(t('toastify.error.connectionError'))
-    }
-    else {
+    } else {
       toast.error(t('toastify.error.error'))
     }
-  }
-  finally {
+  } finally {
     setLoading(false)
   }
 }
@@ -255,7 +246,7 @@ export const getPrevChannels = async (token, dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(response => dispatch(getChannels(response.data)))
+    .then((response) => dispatch(getChannels(response.data)))
 }
 
 export const getPrevMessages = async (token, dispatch) => {
@@ -265,5 +256,5 @@ export const getPrevMessages = async (token, dispatch) => {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then(response => dispatch(getMessages(response.data)))
+    .then((response) => dispatch(getMessages(response.data)))
 }

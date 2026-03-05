@@ -41,8 +41,8 @@ const MessagesBox = ({ currentChannelId }) => {
                       ? (
                           <ul className="message-history">
                             {messagesForRoom.map(
-                              ({ id: msgId, username, body }) => (
-                                <li key={msgId}>
+                              ({ id, username, body }) => (
+                                <li key={id}>
                                   <span className="username">
                                     {username}
                                     {': '}
