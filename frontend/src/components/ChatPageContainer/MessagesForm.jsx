@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import * as formik from 'formik'
 import { useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -13,8 +13,7 @@ const MessagesForm = ({ currentChannelId, mainInputRef }) => {
 
   useEffect(() => {
     mainInputRef.current.focus()
-    console.log(currentChannelId)
-  }, [currentChannelId]) 
+  }, [currentChannelId])
 
   return (
     <div className="input-area">

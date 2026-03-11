@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef} from 'react'
+import { useState, useEffect, useRef } from 'react'
 import '/src/assets/css/style.css'
 import { Tab } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'

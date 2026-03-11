@@ -42,7 +42,7 @@ const RenameChannelModal = ({
         onHide={handleCloseRename}
         onEntered={focusInput}
         className="modal"
-        restoreFocus={false} 
+        restoreFocus={false}
         onExited={() => mainInputRef.current?.focus()}
       >
         <Modal.Header closeButton>

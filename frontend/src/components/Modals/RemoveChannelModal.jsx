@@ -13,9 +13,9 @@ const RemoveChannelModal = ({
   mainInputRef,
 }) => {
   const { t } = useTranslation()
-  const { token } = useSelector((state) => state.authStore)
+  const { token } = useSelector(state => state.authStore)
   const [loading, setLoading] = useState(false)
-  const messages = useSelector((state) => state.messagesStore.messages)
+  const messages = useSelector(state => state.messagesStore.messages)
   const messagesForDel = messages.filter(
     ({ channelId }) => channelId === currentChannel.id,
   )
