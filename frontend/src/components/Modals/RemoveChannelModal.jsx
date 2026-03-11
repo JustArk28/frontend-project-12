@@ -10,11 +10,12 @@ const RemoveChannelModal = ({
   handleCloseRemove,
   currentChannel,
   setCurrentChannelId,
+  mainInputRef,
 }) => {
   const { t } = useTranslation()
-  const { token } = useSelector(state => state.authStore)
+  const { token } = useSelector((state) => state.authStore)
   const [loading, setLoading] = useState(false)
-  const messages = useSelector(state => state.messagesStore.messages)
+  const messages = useSelector((state) => state.messagesStore.messages)
   const messagesForDel = messages.filter(
     ({ channelId }) => channelId === currentChannel.id,
   )
@@ -32,7 +33,13 @@ const RemoveChannelModal = ({
 
   return (
     <>
-      <Modal show={showRemove} onHide={handleCloseRemove} className="modal">
+      <Modal
+        show={showRemove}
+        onHide={handleCloseRemove}
+        className="modal"
+        restoreFocus={false}
+        onExited={() => mainInputRef.current?.focus()}
+      >
         <Modal.Header closeButton>
           <Modal.Title>{t('modal.removeChannel.title')}</Modal.Title>
         </Modal.Header>

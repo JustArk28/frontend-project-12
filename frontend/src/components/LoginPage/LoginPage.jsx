@@ -32,7 +32,7 @@ const LoginPage = () => {
           <div className="my-body-card">
             <img
               className="img"
-              src="src/assets/public/avatar-1.jpg"
+              src="/avatar-1.jpg"
               alt={t('image.login')}
             />
             <Formik

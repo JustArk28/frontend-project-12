@@ -5,16 +5,16 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'react-bootstrap'
 import { sendMessage } from '../../api/axiosRequests'
 
-const MessagesForm = ({ currentChannelId }) => {
+const MessagesForm = ({ currentChannelId, mainInputRef }) => {
   const { Formik, Form, Field } = formik
   const { t } = useTranslation()
-  const inputRef = useRef(null)
   const { token, username } = useSelector(state => state.authStore)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    inputRef.current.focus()
-  }, [currentChannelId])
+    mainInputRef.current.focus()
+    console.log(currentChannelId)
+  }, [currentChannelId]) 
 
   return (
     <div className="input-area">
@@ -30,7 +30,7 @@ const MessagesForm = ({ currentChannelId }) => {
               currentChannelId,
               token,
               username,
-              inputRef,
+              mainInputRef,
             )
           }
         }}
@@ -49,7 +49,7 @@ const MessagesForm = ({ currentChannelId }) => {
                   placeholder={t('messagesForm.placeholder')}
                   value={values.message}
                   onChange={handleChange}
-                  ref={inputRef}
+                  ref={mainInputRef}
                   autoComplete="off"
                 />
               </label>

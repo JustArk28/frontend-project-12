@@ -43,7 +43,7 @@ const SignUpPage = () => {
           <div className="my-body-card">
             <img
               className="img"
-              src="src/assets/public/avatar-2.jpg"
+              src="/avatar-2.jpg"
               alt={t('image.signup')}
             />
 

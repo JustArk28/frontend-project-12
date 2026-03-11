@@ -10,6 +10,7 @@ const RenameChannelModal = ({
   showRename,
   handleCloseRename,
   currentChannel,
+  mainInputRef,
 }) => {
   const { t } = useTranslation()
   const inputRef = useRef(null)
@@ -41,6 +42,8 @@ const RenameChannelModal = ({
         onHide={handleCloseRename}
         onEntered={focusInput}
         className="modal"
+        restoreFocus={false} 
+        onExited={() => mainInputRef.current?.focus()}
       >
         <Modal.Header closeButton>
           <Modal.Title>{t('modal.renameChannel.title')}</Modal.Title>

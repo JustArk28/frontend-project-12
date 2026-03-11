@@ -7,13 +7,18 @@ import '/src/assets/css/style.css'
 import { useTranslation } from 'react-i18next'
 import { addNewChannel } from '../../api/axiosRequests'
 
-const AddChannelModal = ({ show, handleClose, setCurrentChannelId }) => {
+const AddChannelModal = ({
+  show,
+  handleClose,
+  setCurrentChannelId,
+  mainInputRef,
+}) => {
   const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const inputRef = useRef()
-  const { token } = useSelector(state => state.authStore)
-  const channels = useSelector(state => state.channelsStore.channels)
-  const channelsNames = channels.map(channel => channel.name)
+  const { token } = useSelector((state) => state.authStore)
+  const channels = useSelector((state) => state.channelsStore.channels)
+  const channelsNames = channels.map((channel) => channel.name)
   const { Formik } = formik
   const schema = yup.object().shape({
     channelName: yup
@@ -31,7 +36,13 @@ const AddChannelModal = ({ show, handleClose, setCurrentChannelId }) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} className="modal">
+      <Modal
+        show={show}
+        onHide={handleClose}
+        restoreFocus={false}
+        onExited={() => mainInputRef.current?.focus()}
+        className="modal"
+      >
         <Modal.Header closeButton>
           <Modal.Title>{t('modal.addChannel.title')}</Modal.Title>
         </Modal.Header>

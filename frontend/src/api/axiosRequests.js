@@ -80,7 +80,7 @@ export const sendMessage = async (
   currentChannelId,
   token,
   username,
-  inputRef,
+  mainInputRef,
 ) => {
   setLoading(true)
   try {
@@ -95,7 +95,7 @@ export const sendMessage = async (
       },
     })
     resetForm()
-    inputRef.current.focus()
+    mainInputRef.current.focus()
   }
   catch (err) {
     console.log(err)
@@ -109,7 +109,7 @@ export const sendMessage = async (
           currentChannelId,
           token,
           username,
-          inputRef,
+          mainInputRef,
         )
       }, 10000)
       toast.error(t('toastify.error.connectionError'))

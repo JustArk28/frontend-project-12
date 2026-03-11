@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef} from 'react'
 import '/src/assets/css/style.css'
 import { Tab } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
@@ -23,6 +23,7 @@ const socket = io()
 
 const ChatPage = () => {
   const { t } = useTranslation()
+  const mainInputRef = useRef(null)
   const [currentChannelId, setCurrentChannelId] = useState('1')
   const [currentChannel, setCurrentChannel] = useState({})
 
@@ -91,7 +92,6 @@ const ChatPage = () => {
       <div className="chat-body">
         <Tab.Container
           activeKey={currentChannelId}
-          onSelect={currentChannelId => setCurrentChannelId(currentChannelId)}
           id="list-group-tabs-example"
         >
           <div className="channels">
@@ -105,17 +105,20 @@ const ChatPage = () => {
               show={show}
               handleClose={handleClose}
               setCurrentChannelId={setCurrentChannelId}
+              mainInputRef={mainInputRef}
             />
             <RenameChannelModal
               showRename={showRename}
               handleCloseRename={handleCloseRename}
               currentChannel={currentChannel}
+              mainInputRef={mainInputRef}
             />
             <RemoveChannelModal
               showRemove={showRemove}
               handleCloseRemove={handleCloseRemove}
               currentChannel={currentChannel}
               setCurrentChannelId={setCurrentChannelId}
+              mainInputRef={mainInputRef}
             />
             <ChannelsList
               handleRename={handleRename}
@@ -127,6 +130,7 @@ const ChatPage = () => {
           <MessagesBox currentChannelId={currentChannelId} />
           <MessagesForm
             currentChannelId={currentChannelId}
+            mainInputRef={mainInputRef}
           />
         </Tab.Container>
       </div>

@@ -7,7 +7,7 @@ const ErrorPage = () => {
     <>
       <img
         className="img-error"
-        src="src/assets/public/404-D.svg"
+        src="/404-D.svg"
         alt={t('image.notFound')}
       />
       <p className="title-error-page">{t('errorPage.title')}</p>
